@@ -1,0 +1,78 @@
+{% extends 'roboadvisor/base.html' %}
+
+{% block body %}
+
+    <br>
+ <div align="left">
+<h1> Welcome to the roboAdvisor StockWealth Managment </h1> <br>
+ <h2>Before to Start please fill this questionare, in order to set up  your profile</h2>
+
+
+<div class="col-sm-12 col-md-7">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h3>Initial Questionare</h3>
+                    {% if error_message %}
+                        <p><strong>{{ error_message }}</strong></p>
+                    {% endif %}
+                    <form class="form-horizontal" role="form" action="{% url 'roboadvisor:welcome'%}" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="id_age">
+                                Age:
+                            </label>
+                            <div class="col-sm-10">
+                                <input id="id_age"  name="age" type="number">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="id_investment">
+                                Select the initial investment value:
+                            </label>
+                            <div class="col-sm-10">
+                                <input id="id_investment" maxlength="30" name="initialInvestment" type="number">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="id_investment">
+                                time for investment:
+                            </label>
+                            <div class="col-sm-4">
+                                  <select class="col-sm-4" id="id_investment" name="timeInvest">
+                                    <option selected>Choose a return year</option>
+                                    <option value="1">One year</option>
+                                    <option value="2">Two years</option>
+                                    <option value="3">Three years</option>
+                                      <option value="4">Four years</option>
+                                      <option value="5">Five years</option>
+                                  </select>
+                                </div>
+                        </div>
+                         <div class="form-group">
+                            <label class="control-label col-sm-2" for="id_risklevel">
+                                risk level:
+                            </label>
+                            <div class="col-sm-4">
+                                  <select class="col-sm-4" id="id_risklevel" name="risklevel">
+                                    <option selected>Choose type of profile</option>
+                                    <option value="1">Conservative Portfolio : divided in 40 % stock 60 % Bonds</option>
+                                    <option value="2">Regular Portfolio: divided in 70% Stocks 30 % bonds</option>
+                                    <option value="3">Risk Portfolio : maximaxing benefits divided in 87% Stocks 13 % bonds</option>
+
+                                  </select>
+                                </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-success">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+
+</div>
+{% endblock %}

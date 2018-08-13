@@ -1,0 +1,39 @@
+{% extends 'roboadvisor/base.html' %}
+
+
+{% block body %}
+<div class="panel panel-default">
+    <h1>{{ portfolio.assetClass}}</h1>
+    <h2>  Total invested in this category : $ {{ portfolio.marketValue }} </h2>
+
+<h3>Date: {{ today }}</h3>
+
+
+
+
+
+
+<table style="width:30%" class="table">
+    <thead class="mdb-color darken-3">
+    <tr class="text-white"><th>Name</th><th>Symbol</th><th>Price Today</th> <th> daily change</th><th>Shares buyed </th></tr>
+    </thead>
+<tbody>
+ {% for company in companies %}
+     <tr><th><a href="/robadv/{{ company.id }}/">{{company.name}}</a></th><th>{{company.abreviation}}</th><th>{{company.price}}</th>
+         <th>{{company.change}} % </th>
+
+         <th> {% if company.shares >= 0 %} {{ company.shares }}{% endif %}
+
+             </th></tr>
+   {% endfor %}
+
+</tbody>
+
+</table>
+
+
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'roboadvisor/graphBase.html' %}
+
+{% block body %}
+<div id='container'> Chart will be rendered here </div>
+
+<table style="width:30%" class="table">
+    <thead class="mdb-color darken-3">
+    <tr class="text-white"><th>Transaction Id</th><th>Type</th></th><th>Date</th><th>Amount</th> <th> CompanyID</th></tr>
+    </thead>
+        <tbody>
+         {% for transaction in transactions %}
+
+             <tr> <th>{{ transaction.id }}</th>
+                 <th> {% if transaction.type == 1 %} Deposit {% endif %} {% if transaction.type == 2 %} withdrawal {% endif %} {% if transaction.type == 3 %} Share Buyed {% endif %}
+             </th> <th> {{ transaction.date }} </th><th>${{ transaction.amount }}</th>
+
+             <th> {% if transaction.type == 3 %} {{ transaction.companyFK.name }}{% endif %}</th>
+             </tr>
+
+           {% endfor %}
+
+        </tbody>
+        </table>
+{% endblock %}
