@@ -1,0 +1,14 @@
+{% extends 'roboadvisor/base.html' %}
+
+{% block body %}
+
+    <br>
+ <div align="left">
+<h1> Stock Market </h1> <br>
+<ul>
+   {% for company in CompanyList %}
+    <li><a href="/robadv/{{ company.id }}/">{{company.name}}</a> </li>  {{ company.userid }}
+    {% endfor %}
+</ul>
+</div>
+{% endblock %}

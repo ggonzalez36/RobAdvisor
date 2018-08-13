@@ -1,0 +1,81 @@
+{% extends 'roboadvisor/graphBase.html' %}
+
+{% block body %}
+
+    <br>
+ <div align="left">
+
+ <div class="panel panel-default">
+     <h3> Today is : {{ today }}</h3>
+     <h2>  Balance: $ {{ invest }} </h2>
+
+
+     <p>
+  <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Deposit Investment </a>
+  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2" disabled>Transfer Return</button>
+
+</p>
+<div class="row">
+  <div class="col">
+    <div class="collapse multi-collapse" id="multiCollapseExample1">
+      <div class="card card-body">
+          <form  class="col-sm-4" role="form" action="" method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+               <label class="control-label col-sm-12" for="id_age">amount to deposit:</label>
+               <input id="id_amount"  name="amount" type="number">
+              <button type="submit"  name="Deposit" class="btn btn-success">Submit</button>
+          </form>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="collapse multi-collapse" id="multiCollapseExample2">
+      <div class="card card-body">
+        <form  class="col-sm-4" role="form" action="" method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+               <label class="control-label col-sm-12" for="id_age">amount to transfer:</label>
+               <input id="id_amount"  name="amount" type="number">
+              <button type="submit" name="Transfer" class="btn btn-success">Submit</button>
+          </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+     <div class="graph">
+        <div id='container'> Chart will be rendered here </div>
+     </div>
+     <h2> Final  Return predicted  for investment Cyle is ${{ userProjection.investment }} in {{ userProjection.date }} </h2>
+
+
+
+
+
+</div>
+
+
+ <div class="panel panel-default">
+     <h1> Diversifided Portfolio      $ {{ invest }}</h1>
+     <table style="width:30%" class="table">
+    <thead class="mdb-color darken-3">
+    <tr class="text-white"><th>Asset Class</th><th>Tarjet</th><th>Market Value</th> <th>   Return daily</th></tr>
+    </thead>
+        <tbody>
+         {% for port in portfolio %}
+
+             <tr><th><a href="/robadv/asset/{{ port.assetId }}/" >{{port.assetClass}}</a> </th></th> <th>  <div class="progress">{{port.tarjet}}%
+    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="{{port.tarjet}}" aria-valuemin="20" aria-valuemax="100" style="width:{{port.tarjet}}%">
+
+    </div>
+  </div></th><th> $ {{port.marketValue}}</th> <th> <span class="label label-success">{{port.returned}}  </span>  </th></tr>
+           {% endfor %}
+
+        </tbody>
+        </table>
+
+ </div>
+
+
+ </div>
+
+{% endblock %}

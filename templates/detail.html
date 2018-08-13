@@ -1,0 +1,42 @@
+{% extends 'roboadvisor/graphBase.html' %}
+
+
+{% block body %}
+
+    <div class="panel panel-default">
+<H1>{{ Company.name }} </H1>
+
+        <div class="graph">
+        <div id='container'> Chart will be rendered here </div>
+     </div>
+
+<div class="row">
+
+
+    <div class="col-sm-3">
+                <br>
+                <a href="{{ predictionlink }}">
+                    <button type="button" class="btn btn-success">
+                        <span class="glyphicon glyphicon-plus"></span>&nbsp; Set a Prediction
+                    </button>
+                </a>
+    </div>
+
+
+
+    <div class="col-sm-3">
+                <br>
+                <a href="{{ graphPredicted }}">
+                    <button type="button" class="btn btn-success">
+                        <span class="glyphicon glyphicon-time"></span>&nbsp; Graph a Prediction
+                    </button>
+                </a>
+    </div>
+
+
+</div>
+    </div>
+<br>
+
+
+{%  endblock %}
