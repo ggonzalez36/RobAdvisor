@@ -2,6 +2,13 @@
 
 Academic MSc project in Data Science and Computational Intelligence (originally built in 2018).
 
+## Scope and credits
+
+- **What is here:** the Django web application from my MSc final project (portfolio management UI) and its time-series forecasting path based on **Prophet**.
+- **What is not here:** my thesis compared Prophet with **LSTM** neural networks; the LSTM experiments are not included in this repository.
+- **Third-party code:** `Roboadvisor1/stocker.py` is adapted from the open-source **Stocker** tool by Will Koehrsen ([WillKoehrsen/Data-Analysis](https://github.com/WillKoehrsen/Data-Analysis)). Credit for the original design of that module belongs to its author.
+- **Data:** the Quandl WIKI dataset used originally has been discontinued; the forecasting module needs an alternative data source to run today.
+
 This repository has been updated to make local setup and modernization easier on current Python environments.
 
 ## ✅ What was updated

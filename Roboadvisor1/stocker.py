@@ -1,3 +1,5 @@
+# Adapted from "Stocker" by Will Koehrsen (https://github.com/WillKoehrsen/Data-Analysis).
+# Used in this MSc project for Prophet-based price forecasting; original design credit to the author.
 # Quandl for financial analysis, pandas and numpy for data manipulation
 # fbprophet for additive models, #pytrends for Google trend data
 import quandl
